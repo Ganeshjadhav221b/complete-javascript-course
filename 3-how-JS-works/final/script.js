@@ -99,18 +99,18 @@ calculateAge(1985);
 
 function calculateAge(year) {
     console.log(2016 - year);
-    console.log(this);
+    console.log(this);          //prints window
 }
 
 var john = {
     name: 'John',
     yearOfBirth: 1990,
     calculateAge: function() {
-        console.log(this);
+        console.log(this);  // prints john
         console.log(2016 - this.yearOfBirth);
         
         function innerFunction() {
-            console.log(this);
+            console.log(this); //prints window since this is not method but a function
         }
         innerFunction();
     }
@@ -124,6 +124,6 @@ var mike = {
 };
 
 
-mike.calculateAge = john.calculateAge;
+mike.calculateAge = john.calculateAge; ///method borrowing.
 mike.calculateAge();
 */
