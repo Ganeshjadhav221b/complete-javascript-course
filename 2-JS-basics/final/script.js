@@ -1,6 +1,16 @@
 /*****************************
 * Variables and data types
-*/
+*****************************/
+/*****************************
+Primitive datatype-
+1. Number
+2. string
+3. boolean
+4. undefined - variable doesnt have a value yet.
+5. null - non existent.
+*****************************/
+
+//JS. has dynamic typing.
 /*
 var firstName = 'John';
 console.log(firstName);
@@ -12,7 +22,7 @@ var fullAge = true;
 console.log(fullAge);
 
 var job;
-console.log(job);
+console.log(job); //-- undefined
 
 job = 'Teacher';
 console.log(job);
@@ -26,13 +36,21 @@ var if = 23;
 
 
 /*****************************
-* Variable mutation and type coercion
-*/
+*Type coercion and  Variable mutation
+*****************************/
 /*
 var firstName = 'John';
 var age = 28;
 
 // Type coercion
+
+/*****************************
+Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers).
+Mutable is a type of variable that can be changed. In JavaScript, only objects and arrays are mutable, not primitive values.
+
+(You can make a variable name point to a new value, but the previous value is still held in memory. Hence the need for garbage collection.)
+*****************************/
+/*
 console.log(firstName + ' ' + age);
 
 var job, isMarried;
@@ -51,6 +69,14 @@ var lastName = prompt('What is his last Name?');
 console.log(firstName + ' ' + lastName);
 */
 
+
+/*****************************
+Existing value of "job" is retrieved
+"job" is assigned value of "twenty eight"
+The resultant value is then allocated to a new block of memory
+"job" object now points to the newly created memory space
+Previously created memory space is now available for garbage collection
+*****************************/
 
 
 /*****************************
@@ -276,8 +302,10 @@ switch (true) {
 
 var height;
 
-height = 23;
-
+height = 23;   // if this statement is removed, then in the below snippet, else part will be executed. 
+// === vs ==
+// 23 == '23' ->true
+// 23 === '23' -> false
 if (height || height === 0) {
     console.log('Variable is defined');
 } else {
@@ -285,7 +313,7 @@ if (height || height === 0) {
 }
 
 // Equality operators
-if (height === '23') {
+if (height == '23') {
     console.log('The == operator does type coercion!');
 }
 */
@@ -369,7 +397,7 @@ yearsUntilRetirement(1969, 'Jane');
 
 
 
-/*****************************
+/**
 * Function Statements and Expressions
 */
 /*
@@ -411,26 +439,33 @@ console.log(names.length);
 // Mutate array data
 names[1] = 'Ben';
 names[names.length] = 'Mary';
-console.log(names);
-
+names[7] = 'Mary';
+console.log(names);   //["John", "Ben", "Jane", "Mary", empty × 3, "Mary"]
 // Different data types
 var john = ['John', 'Smith', 1990, 'designer', false];
 
-john.push('blue');
-john.unshift('Mr.');
-console.log(john);
+john.push('blue'); //Adds element to end.
+john.unshift('Mr.');  //Adds element to beginning
+console.log(john); //["Mr.", "John", "Smith", 1990, "designer", false, "blue"]
 
 john.pop();
-john.pop();
-john.shift();
+john.pop(); //Removes last element
+john.shift();  //Removes first element
 console.log(john);
 
 console.log(john.indexOf(23));
 
 var isDesigner = john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John IS a designer';
 console.log(isDesigner);
-*/
 
+
+
+fruits.forEach(function(item, index, array) {
+  console.log(item, index)
+})
+// Apple 0
+// Banana 1
+*/
 
 
 /*****************************
