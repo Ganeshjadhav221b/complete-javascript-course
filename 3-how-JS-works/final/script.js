@@ -1,6 +1,21 @@
 /////////////////////////////////////
 // Lecture: Hoisting
+/****Refer->https://developer.mozilla.org/en-US/docs/Glossary/Hoisting
 
+hoisting suggests that variable and function declarations are physically moved to the top of your code, but this is not in fact what happens. 
+Instead, the variable and function declarations are put into memory during the compile phase, but stay exactly where you typed them in your code.
+
+JavaScript puts function declarations into memory before it executes any code segment is that it allows you to use a function before you declare it in your code.
+Hoisting works well with other data types and variables. The variables can be initialized and used before they are declared.
+JavaScript only hoists declarations, not initializations.
+If a variable is declared and initialized after using it, the value will be undefined
+console.log(num); // Returns undefined, as only declaration was hoisted, no initialization has happened at this stage 
+var num; // Declaration
+num = 6; // Initialization
+---------------------another ex.
+console.log(num); // Throws ReferenceError exception as the variable wasnt declared.
+num = 6; // Initialization
+****/
 /*
 // functions
 calculateAge(1965);
@@ -13,6 +28,7 @@ function calculateAge(year) {
 var retirement = function(year) {
     console.log(65 - (2016 - year));
 }
+//hosting doesnt work with fn expressions.
 
 
 // variables
