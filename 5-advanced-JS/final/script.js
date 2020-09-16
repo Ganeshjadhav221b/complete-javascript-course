@@ -270,6 +270,25 @@ interviewQuestion('teacher')('John');
 
 /////////////////////////////
 // Lecture: Bind, call and apply
+/*****************************
+1. Call
+The call() allows for a function/method belonging to one object to be assigned and called for a different object.
+
+call() provides a new value of this to the function/method. With call(), you can write a method once and then inherit it in another object,
+without having to rewrite the method for the new object.
+
+2. Apply
+apply is very similar to call(), except for the type of arguments it supports. You use an arguments array instead of a list of arguments (parameters).
+With apply, you can also use an array literal, for example, func.apply(this, ['eat', 'bananas']), or an Array object, for example, func.apply(this, new Array('eat', 'bananas')).
+
+You can also use arguments for the argsArray parameter. arguments is a local variable of a function. It can be used for all unspecified arguments of the called object. 
+Thus, you do not have to know the arguments of the called object when you use the apply method. You can use arguments to pass all the arguments to the called object. 
+The called object is then responsible for handling the arguments.
+
+3. Bind 
+The simplest use of bind() is to make a function that, no matter how it is called, is called with a particular this value.
+*****************************/
+
 /*
 var john = {
     name: 'John',
