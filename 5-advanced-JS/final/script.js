@@ -7,6 +7,10 @@ var john = {
     job: 'teacher'
 };
 
+Creating objects can be done via-
+1. fn constructor(var obj = new Ctr Name)
+2. Object.create(parentFnName)
+//fn constructor:
 var Person = function(name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
@@ -19,6 +23,9 @@ Person.prototype.calculateAge  = function() {
 
 Person.prototype.lastName = 'Smith';
 
+john.hasOwnProperty('job') //true 
+john.hasOwnProperty('lastName') // false->only its own properties & not the prototype's
+
 var john = new Person('John', 1990, 'teacher');
 var jane = new Person('Jane', 1969, 'designer');
 var mark = new Person('Mark', 1948, 'retired');
@@ -30,6 +37,27 @@ mark.calculateAge();
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
+//--another ex. from doc.
+var o = {
+  a: 2,
+  m: function() {
+    return this.a + 1;
+  }
+};
+
+console.log(o.m()); // 3
+// When calling o.m in this case, 'this' refers to o
+
+var p = Object.create(o);
+// p is an object that inherits from o
+
+p.a = 4; // creates a property 'a' on p
+console.log(p.m()); // 5
+// when p.m is called, 'this' refers to p.
+// So when p inherits the function m of o, 
+// 'this.a' means p.a, the property 'a' of p
+
+
 */
 
 
@@ -64,8 +92,8 @@ var jane = Object.create(personProto, {
 var a = 23;
 var b = a;
 a = 46;
-console.log(a);
-console.log(b);
+console.log(a); //46
+console.log(b); //23
 
 
 
@@ -76,8 +104,8 @@ var obj1 = {
 };
 var obj2 = obj1;
 obj1.age = 30;
-console.log(obj1.age);
-console.log(obj2.age);
+console.log(obj1.age);  //30
+console.log(obj2.age);  //30
 
 // Functions
 var age = 27;
@@ -134,6 +162,8 @@ var fullAges = arrayCalc(ages, isFullAge);
 var rates = arrayCalc(ages, maxHeartRate);
 
 console.log(ages);
+
+console.log(fullAges);
 console.log(rates);
 */
 
@@ -235,7 +265,7 @@ function interviewQuestion(job) {
 
 interviewQuestion('teacher')('John');
 */
-
+//NOTE- INNER FUNCTION ALWAYS HAS ACCESS TO VARIABLES OF OUTERFUNCTIONS EVEN IF OUTER FUNCTION HAS RETURNED.
 
 
 /////////////////////////////
