@@ -315,6 +315,11 @@ john.presentation.call(emily, 'friendly', 'afternoon');
 
 //john.presentation.apply(emily, ['friendly', 'afternoon']);
 
+/*******************
+Bind returns a function(with preset arguments, in below example it is 'john') which can be used later.
+Currying- Creating a function based on other function and having preset parameters.
+*******************/
+
 var johnFriendly = john.presentation.bind(john, 'friendly');
 
 johnFriendly('morning');
