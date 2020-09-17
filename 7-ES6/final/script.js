@@ -6,13 +6,13 @@
 var name5 = 'Jane Smith';
 var age5 = 23;
 name5 = 'Jane Miller';
-console.log(name5);
+console.log(name5); //Jane Miller
 
 // ES6
 const name6 = 'Jane Smith';
 let age6 = 23;
-name6 = 'Jane Miller';
-console.log(name6);
+name6 = 'Jane Miller'; //error- assignment to constant.
+console.log(name6); 
 
 
 // ES5
@@ -36,13 +36,14 @@ function driversLicence6(passedTest) {
     
     //console.log(firstName);
     let firstName;
-    const yearOfBirth = 1990;
+    const yearOfBirth = 1990; // declaration & initialization must be coupled.
     
     if (passedTest) {
         firstName = 'John';
+        
     }
     
-    console.log(firstName + ', born in ' + yearOfBirth + ', is now officially allowed to drive a car.');
+    console.log(firstName + ', born in ' + yearOfBirth + ', is now officially allowed to drive a car.'); // Error- firstName is not defined.
 }
 
 driversLicence6(true);
@@ -53,13 +54,19 @@ var i = 23;
 
 for (var i = 0; i < 5; i++) {
     console.log(i);
-}
+}//prints 0 -> 4 
 
-console.log(i);
+console.log(i); //prints 5
+
+
+let i = 23;
+
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}//prints 0 -> 4 
+
+console.log(i); //prints 23
 */
-
-
-
 
 /////////////////////////////////
 // Lecture: Blocks and IIFEs
@@ -72,8 +79,8 @@ console.log(i);
     var c = 3;
 }
 
-//console.log(a + b);
-console.log(c);
+//console.log(a + b); //error
+console.log(c); //no error because above is block & not function(or IIFE)
 
 
 // ES5
@@ -83,9 +90,6 @@ console.log(c);
 
 //console.log(c);
 */
-
-
-
 
 /////////////////////////////////
 // Lecture: Strings
@@ -102,7 +106,7 @@ function calcAge(year) {
 // ES5
 console.log('This is ' + firstName + ' ' + lastName + '. He was born in ' + yearOfBirth + '. Today, he is ' + calcAge(yearOfBirth) + ' years old.');
 
-// ES6
+// ES6 //mind the tildes'
 console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today, he is ${calcAge(yearOfBirth)} years old.`);
 
 
@@ -133,7 +137,7 @@ console.log(ages5);
 let ages6 = years.map(el => 2016 - el);
 console.log(ages6);
 
-ages6 = years.map((el, index) => `Age element ${index + 1}: ${2016 - el}.`);
+ages6 = years.map((el, index) => `Age element ${index + 1}: ${2016 - el}.`);    //if its one line then no need to use 'return' or 'curly braces'
 console.log(ages6);
 
 ages6 = years.map((el, index) => {
@@ -157,16 +161,16 @@ var box5 = {
     position: 1,
     clickMe: function() {
        
-       var self = this; document.querySelector('.green').addEventListener('click', function() {
+       var self = this; document.querySelector('.green').addEventListener('click', function() { //if self is not declared and this is used instead;- it is a regular fn and not method, hence this will point to (global) windoow
             var str = 'This is box number ' + self.position + ' and it is ' + self.color;
             alert(str);
         });
     }
 }
-//box5.clickMe();
+//box5.clickMe(); //gives undefined for position
 
 
-// ES6
+// ES6 //avoids the use of self 
 const box6 = {
     color: 'green',
     position: 1,
@@ -179,11 +183,12 @@ const box6 = {
 }
 box6.clickMe();
 
+//this keyword in Arrow functions use  it from surroundinng, in function declaration, it  points to function(if its inside one)/global.
 
 const box66 = {
     color: 'green',
     position: 1,
-    clickMe: () => {
+    clickMe: () => { //the  method shares this keyword from surroundings(global)
         document.querySelector('.green').addEventListener('click', () => {
             var str = 'This is box number ' + this.position + ' and it is ' + this.color;
             alert(str);
@@ -201,7 +206,7 @@ function Person(name) {
 Person.prototype.myFriends5 = function(friends) {
     
     var arr = friends.map(function(el) {
-       return this.name + ' is friends with ' + el; 
+       return this.name + ' is friends with ' + el;     //this.name will be blank (if not binded) as this is set to undefined
     }.bind(this));
     
     console.log(arr);
