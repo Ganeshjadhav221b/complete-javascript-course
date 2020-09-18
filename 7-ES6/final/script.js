@@ -278,6 +278,7 @@ console.log(retirement);
 // Lecture: Arrays
 
 /*
+//querySelectorAll returns a nodelist, so we need to convert it to array
 const boxes = document.querySelectorAll('.box');
 
 //ES5
@@ -320,15 +321,15 @@ var ages = [12, 17, 8, 21, 14, 11];
 var full = ages.map(function(cur) {
     return cur >= 18;
 });
-console.log(full);
+console.log(full); //[false, false, false, true, false, false]
 
 console.log(full.indexOf(true));
 console.log(ages[full.indexOf(true)]);
 
 
 //ES6
-console.log(ages.findIndex(cur => cur >= 18));
-console.log(ages.find(cur => cur >= 18));
+console.log(ages.findIndex(cur => cur >= 18)); //finds index 
+console.log(ages.find(cur => cur >= 18)); //21 - finds element that satisfies condition
 */
 
 
@@ -377,7 +378,7 @@ Array.from(all).forEach(cur => cur.style.color = 'purple');
 /*
 //ES5
 function isFullAge5() {
-    //console.log(arguments);
+    //console.log(arguments); //the args are not in array form
     var argsArr = Array.prototype.slice.call(arguments);
     
     argsArr.forEach(function(cur) {
@@ -399,7 +400,7 @@ isFullAge6(1990, 1999, 1965, 2016, 1987);
 
 
 //ES5
-function isFullAge5(limit) {
+function isFullAge5(limit) { ///limit is first paramter
     var argsArr = Array.prototype.slice.call(arguments, 1);
 
     argsArr.forEach(function(cur) {
@@ -407,9 +408,7 @@ function isFullAge5(limit) {
     })
 }
 
-
-//isFullAge5(16, 1990, 1999, 1965);
-isFullAge5(1990, 1999, 1965, 2016, 1987);
+isFullAge5(21, 1999, 1965, 2016, 1987);
 
 
 //ES6
@@ -417,10 +416,8 @@ function isFullAge6(limit, ...years) {
     years.forEach(cur => console.log( (2016 - cur) >= limit));
 }
 
-isFullAge6(16, 1990, 1999, 1965, 2016, 1987);
+isFullAge6(21, 1990, 1999, 1965, 2016, 1987);
 */
-
-
 
 
 /////////////////////////////////
@@ -452,9 +449,6 @@ function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = '
 var john = new SmithPerson('John', 1990);
 var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
 */
-
-
-
 
 /////////////////////////////////
 // Lecture: Maps
