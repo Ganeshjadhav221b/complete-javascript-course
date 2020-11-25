@@ -30,7 +30,7 @@ console.log(job);
 // Variable naming rules
 var _3years = 3;
 var johnMark = 'John and MArk';
-var if = 23;
+var if = 23; //Uncaught SyntaxError: Unexpected token 'if'
 */
 
 
